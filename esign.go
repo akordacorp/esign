@@ -97,6 +97,8 @@ type Op struct {
 	Accept string
 	// Leave nil for v2
 	Version *APIVersion
+	// Additional Headers to add to the request
+	Headers map[string]string
 }
 
 //type requestHandler interface {
@@ -173,6 +175,11 @@ func (op *Op) createOpRequest(ctx context.Context, accept string) (*http.Request
 	if len(op.QueryOpts) > 0 {
 		req.URL.RawQuery = op.QueryOpts.Encode()
 	}
+	// Add the additional headers
+	for key, value := range op.Headers {
+		req.Header.Set(key, value)
+	}
+
 	if len(ct) > 0 {
 		req.Header.Set("Content-Type", ct)
 	}

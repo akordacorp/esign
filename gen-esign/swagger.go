@@ -512,6 +512,27 @@ func (o Operation) PathParameters() []PathParam {
 	return params
 }
 
+// HeaderParam provides a name/value for headers to add to the request
+type HeaderParam struct {
+	Name   string
+	GoName string
+}
+
+// HeaderParameters returns list of header parameters used to
+// construct a call url
+func (o Operation) HeaderParameters() []HeaderParam {
+	var params []HeaderParam
+	for _, p := range o.Parameters {
+		if p.In == "header" {
+			params = append(params, HeaderParam{
+				Name:   p.Name,
+				GoName: ToGoNameLC(p.Name),
+			})
+		}
+	}
+	return params
+}
+
 // QueryOpt describes a possibe url query parameters. Used to
 // construct option funcs for a call.
 type QueryOpt struct {
