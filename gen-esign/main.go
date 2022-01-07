@@ -342,6 +342,7 @@ type ExtOperation struct {
 	HasUploads        bool
 	IsMediaUpload     bool
 	PathParams        []PathParam
+	HeaderParams      []HeaderParam
 	FuncName          string
 	QueryOptions      []QueryOpt
 	Result            string
@@ -371,6 +372,7 @@ func (ver *Version) doPackage(resTempl *template.Template, serviceName, descript
 			HasUploads:        IsUploadFilesOperation(op.OperationID),
 			IsMediaUpload:     payload != nil && payload.Type == "*esign.UploadFile",
 			PathParams:        op.PathParameters(),
+			HeaderParams:      op.HeaderParameters(),
 			FuncName:          op.GoFuncName(GetServicePrefixes(op.Service)),
 			QueryOptions:      op.QueryOpts(paramOverrides),
 			Result:            op.Result(defMap),

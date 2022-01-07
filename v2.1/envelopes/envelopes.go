@@ -900,7 +900,7 @@ func (op *DocumentsListOp) SharedUserID(val string) *DocumentsListOp {
 // https://developers.docusign.com/esign-rest-api/reference/envelopes/envelopedocuments/update
 //
 // SDK Method Envelopes::updateDocument
-func (s *Service) DocumentsUpdate(documentID string, envelopeID string, media io.Reader, mimeType string) *DocumentsUpdateOp {
+func (s *Service) DocumentsUpdate(documentID string, envelopeID string, contentDisposition string, media io.Reader, mimeType string) *DocumentsUpdateOp {
 	return &DocumentsUpdateOp{
 		Credential: s.credential,
 		Method:     "PUT",
@@ -908,6 +908,7 @@ func (s *Service) DocumentsUpdate(documentID string, envelopeID string, media io
 		Payload:    &esign.UploadFile{Reader: media, ContentType: mimeType},
 		QueryOpts:  make(url.Values),
 		Version:    esign.VersionV21,
+		Headers:    map[string]string{"Content-Disposition": contentDisposition},
 	}
 }
 
