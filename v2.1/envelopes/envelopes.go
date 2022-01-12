@@ -8,11 +8,11 @@
 // Package envelopes implements the DocuSign SDK
 // category Envelopes.
 //
-// The DocuSign API Envelope category includes the resources and methods for sending and managing envelopes and envelope data.
+// The eSignature API Envelope category includes the resources and methods for sending and managing envelopes and envelope data.
 //
-// Envelopes are the key objects within the DocuSign eSignature system. As a result, they are complex data structures with few required fields. See the [Code Examples](https://developers.docusign.com/esign-rest-api/code-examples) for  examples and solutions.
+// Envelopes are the key objects in the DocuSign platform. As a result, they are complex data structures with few required fields. See the [How-to guides](https://developers.docusign.com/docs/esign-rest-api/how-to/) for examples and solutions.
 //
-// To learn more about envelopes, see [Envelopes and Template](https://developers.docusign.com/esign-rest-api/guides/concepts/envelopes).
+// To learn more about envelopes, see [Envelopes](https://developers.docusign.com/docs/esign-rest-api/esign101/concepts/envelopes/).
 //
 // Service Api documentation may be found at:
 // https://developers.docusign.com/esign-rest-api/reference/Envelopes
@@ -312,7 +312,7 @@ func (op *AttachmentsUpdateOp) Do(ctx context.Context) (*model.EnvelopeAttachmen
 	return res, ((*esign.Op)(op)).Do(ctx, &res)
 }
 
-// ConsumerDisclosuresGet reserved: Gets the Electronic Record and Signature Disclosure associated with the account.
+// ConsumerDisclosuresGet gets the Electronic Record and Signature Disclosure for a specific envelope recipient.
 //
 // https://developers.docusign.com/esign-rest-api/reference/envelopes/envelopeconsumerdisclosures/get
 //
@@ -336,7 +336,53 @@ func (op *ConsumerDisclosuresGetOp) Do(ctx context.Context) (*model.ConsumerDisc
 	return res, ((*esign.Op)(op)).Do(ctx, &res)
 }
 
-// LangCode set the call query parameter langCode
+// LangCode (Optional) The code for the signer language version of the disclosure that you want to retrieve, as a query parameter. The following languages are supported:
+//
+// - Arabic (`ar`)
+// - Bulgarian (`bg`)
+// - Czech (`cs`)
+// - Chinese Simplified (`zh_CN`)
+// - Chinese Traditional (`zh_TW`)
+// - Croatian (`hr`)
+// - Danish (`da`)
+// - Dutch (`nl`)
+// - English US (`en`)
+// - English UK (`en_GB`)
+// - Estonian (`et`)
+// - Farsi (`fa`)
+// - Finnish (`fi`)
+// - French (`fr`)
+// - French Canadian (`fr_CA`)
+// - German (`de`)
+// - Greek (`el`)
+// - Hebrew (`he`)
+// - Hindi (`hi`)
+// - Hungarian (`hu`)
+// - Bahasa Indonesian (`id`)
+// - Italian (`it`)
+// - Japanese (`ja`)
+// - Korean (`ko`)
+// - Latvian (`lv`)
+// - Lithuanian (`lt`)
+// - Bahasa Melayu (`ms`)
+// - Norwegian (`no`)
+// - Polish (`pl`)
+// - Portuguese (`pt`)
+// - Portuguese Brazil (`pt_BR`)
+// - Romanian (`ro`)
+// - Russian (`ru`)
+// - Serbian (`sr`)
+// - Slovak (`sk`)
+// - Slovenian (`sl`)
+// - Spanish (`es`)
+// - Spanish Latin America (`es_MX`)
+// - Swedish (`sv`)
+// - Thai (`th`)
+// - Turkish (`tr`)
+// - Ukrainian (`uk`)
+// - Vietnamese (`vi`)
+//
+// Additionally, you can automatically detect the browser language being used by the viewer and display the disclosure in that language by setting the value to `browser`.
 func (op *ConsumerDisclosuresGetOp) LangCode(val string) *ConsumerDisclosuresGetOp {
 	if op != nil {
 		op.QueryOpts.Set("langCode", val)
@@ -344,7 +390,7 @@ func (op *ConsumerDisclosuresGetOp) LangCode(val string) *ConsumerDisclosuresGet
 	return op
 }
 
-// ConsumerDisclosuresGetDefault gets the Electronic Record and Signature Disclosure associated with the account.
+// ConsumerDisclosuresGetDefault gets the default Electronic Record and Signature Disclosure for an envelope.
 //
 // https://developers.docusign.com/esign-rest-api/reference/envelopes/envelopeconsumerdisclosures/getdefault
 //
@@ -368,7 +414,53 @@ func (op *ConsumerDisclosuresGetDefaultOp) Do(ctx context.Context) (*model.Consu
 	return res, ((*esign.Op)(op)).Do(ctx, &res)
 }
 
-// LangCode set the call query parameter langCode
+// LangCode (Optional) The code for the signer language version of the disclosure that you want to retrieve. The following languages are supported:
+//
+// - Arabic (`ar`)
+// - Bulgarian (`bg`)
+// - Czech (`cs`)
+// - Chinese Simplified (`zh_CN`)
+// - Chinese Traditional (`zh_TW`)
+// - Croatian (`hr`)
+// - Danish (`da`)
+// - Dutch (`nl`)
+// - English US (`en`)
+// - English UK (`en_GB`)
+// - Estonian (`et`)
+// - Farsi (`fa`)
+// - Finnish (`fi`)
+// - French (`fr`)
+// - French Canadian (`fr_CA`)
+// - German (`de`)
+// - Greek (`el`)
+// - Hebrew (`he`)
+// - Hindi (`hi`)
+// - Hungarian (`hu`)
+// - Bahasa Indonesian (`id`)
+// - Italian (`it`)
+// - Japanese (`ja`)
+// - Korean (`ko`)
+// - Latvian (`lv`)
+// - Lithuanian (`lt`)
+// - Bahasa Melayu (`ms`)
+// - Norwegian (`no`)
+// - Polish (`pl`)
+// - Portuguese (`pt`)
+// - Portuguese Brazil (`pt_BR`)
+// - Romanian (`ro`)
+// - Russian (`ru`)
+// - Serbian (`sr`)
+// - Slovak (`sk`)
+// - Slovenian (`sl`)
+// - Spanish (`es`)
+// - Spanish Latin America (`es_MX`)
+// - Swedish (`sv`)
+// - Thai (`th`)
+// - Turkish (`tr`)
+// - Ukrainian (`uk`)
+// - Vietnamese (`vi`)
+//
+// Additionally, you can automatically detect the browser language being used by the viewer and display the disclosure in that language by setting the value to `browser`.
 func (op *ConsumerDisclosuresGetDefaultOp) LangCode(val string) *ConsumerDisclosuresGetDefaultOp {
 	if op != nil {
 		op.QueryOpts.Set("langCode", val)
@@ -376,7 +468,7 @@ func (op *ConsumerDisclosuresGetDefaultOp) LangCode(val string) *ConsumerDisclos
 	return op
 }
 
-// CustomFieldsCreate updates envelope custom fields for an envelope.
+// CustomFieldsCreate creates envelope custom fields for an envelope.
 //
 // https://developers.docusign.com/esign-rest-api/reference/envelopes/envelopecustomfields/create
 //
@@ -598,6 +690,14 @@ func (op *DocumentTabsGetOp) Do(ctx context.Context) (*model.Tabs, error) {
 	return res, ((*esign.Op)(op)).Do(ctx, &res)
 }
 
+// IncludeMetadata when set to **true**, the response includes metadata indicating which properties are editable.
+func (op *DocumentTabsGetOp) IncludeMetadata(val string) *DocumentTabsGetOp {
+	if op != nil {
+		op.QueryOpts.Set("include_metadata", val)
+	}
+	return op
+}
+
 // PageNumbers filters for tabs that occur on the pages that you specify. Enter as a comma-separated list of page GUIDs.
 //
 // Example: `page_numbers=2,6`
@@ -663,12 +763,12 @@ func (op *DocumentVisibilityGetOp) Do(ctx context.Context) (*model.DocumentVisib
 // https://developers.docusign.com/esign-rest-api/reference/envelopes/envelopedocumentvisibility/update
 //
 // SDK Method Envelopes::updateRecipientDocumentVisibility
-func (s *Service) DocumentVisibilityUpdate(envelopeID string, recipientID string, envelopeDocumentVisibility *model.DocumentVisibilityList) *DocumentVisibilityUpdateOp {
+func (s *Service) DocumentVisibilityUpdate(envelopeID string, recipientID string, documentVisibilityList *model.DocumentVisibilityList) *DocumentVisibilityUpdateOp {
 	return &DocumentVisibilityUpdateOp{
 		Credential: s.credential,
 		Method:     "PUT",
 		Path:       strings.Join([]string{"envelopes", envelopeID, "recipients", recipientID, "document_visibility"}, "/"),
-		Payload:    envelopeDocumentVisibility,
+		Payload:    documentVisibilityList,
 		QueryOpts:  make(url.Values),
 		Version:    esign.VersionV21,
 	}
@@ -679,31 +779,6 @@ type DocumentVisibilityUpdateOp esign.Op
 
 // Do executes the op.  A nil context will return error.
 func (op *DocumentVisibilityUpdateOp) Do(ctx context.Context) (*model.DocumentVisibilityList, error) {
-	var res *model.DocumentVisibilityList
-	return res, ((*esign.Op)(op)).Do(ctx, &res)
-}
-
-// DocumentVisibilityUpdateList updates document visibility for recipients
-//
-// https://developers.docusign.com/esign-rest-api/reference/envelopes/envelopedocumentvisibility/updatelist
-//
-// SDK Method Envelopes::updateRecipientsDocumentVisibility
-func (s *Service) DocumentVisibilityUpdateList(envelopeID string, envelopeDocumentVisibility *model.DocumentVisibilityList) *DocumentVisibilityUpdateListOp {
-	return &DocumentVisibilityUpdateListOp{
-		Credential: s.credential,
-		Method:     "PUT",
-		Path:       strings.Join([]string{"envelopes", envelopeID, "recipients", "document_visibility"}, "/"),
-		Payload:    envelopeDocumentVisibility,
-		QueryOpts:  make(url.Values),
-		Version:    esign.VersionV21,
-	}
-}
-
-// DocumentVisibilityUpdateListOp implements DocuSign API SDK Envelopes::updateRecipientsDocumentVisibility
-type DocumentVisibilityUpdateListOp esign.Op
-
-// Do executes the op.  A nil context will return error.
-func (op *DocumentVisibilityUpdateListOp) Do(ctx context.Context) (*model.DocumentVisibilityList, error) {
 	var res *model.DocumentVisibilityList
 	return res, ((*esign.Op)(op)).Do(ctx, &res)
 }
@@ -774,7 +849,7 @@ func (op *DocumentsGetOp) DocumentsByUserid(val string) *DocumentsGetOp {
 	return op
 }
 
-// Encoding set the call query parameter encoding
+// Encoding reserved for DocuSign.
 func (op *DocumentsGetOp) Encoding(val string) *DocumentsGetOp {
 	if op != nil {
 		op.QueryOpts.Set("encoding", val)
@@ -782,7 +857,7 @@ func (op *DocumentsGetOp) Encoding(val string) *DocumentsGetOp {
 	return op
 }
 
-// Encrypt when set to **true**, the PDF bytes returned in the response are encrypted for all the key managers configured on your DocuSign account. The documents can be decrypted with the KeyManager Decrypt Document API.
+// Encrypt when set to **true**, the PDF bytes returned in the response are encrypted for all the key managers configured on your DocuSign account. You can decrypt the documents by using the Key Manager DecryptDocument API method. For more information about Key Manager, see the DocuSign Security Appliance Installation Guide that your organization received from DocuSign.
 func (op *DocumentsGetOp) Encrypt() *DocumentsGetOp {
 	if op != nil {
 		op.QueryOpts.Set("encrypt", "true")
@@ -822,7 +897,7 @@ func (op *DocumentsGetOp) ShowChanges() *DocumentsGetOp {
 	return op
 }
 
-// Watermark when set to **true**, the account has the watermark feature enabled, and the envelope is not complete, the watermark for the account is added to the PDF documents. This option can remove the watermark.
+// Watermark when set to **true**, the account has the watermark feature enabled, and the envelope is not complete, then the watermark for the account is added to the PDF documents. This option can remove the watermark.
 func (op *DocumentsGetOp) Watermark() *DocumentsGetOp {
 	if op != nil {
 		op.QueryOpts.Set("watermark", "true")
@@ -858,6 +933,14 @@ func (op *DocumentsListOp) Do(ctx context.Context) (*model.EnvelopeDocumentsResu
 func (op *DocumentsListOp) DocumentsByUserid(val string) *DocumentsListOp {
 	if op != nil {
 		op.QueryOpts.Set("documents_by_userid", val)
+	}
+	return op
+}
+
+// IncludeDocumentSize set the call query parameter include_document_size
+func (op *DocumentsListOp) IncludeDocumentSize(val string) *DocumentsListOp {
+	if op != nil {
+		op.QueryOpts.Set("include_document_size", val)
 	}
 	return op
 }
@@ -900,7 +983,7 @@ func (op *DocumentsListOp) SharedUserID(val string) *DocumentsListOp {
 // https://developers.docusign.com/esign-rest-api/reference/envelopes/envelopedocuments/update
 //
 // SDK Method Envelopes::updateDocument
-func (s *Service) DocumentsUpdate(documentID string, envelopeID string, contentDisposition string, media io.Reader, mimeType string) *DocumentsUpdateOp {
+func (s *Service) DocumentsUpdate(documentID string, envelopeID string, media io.Reader, mimeType string) *DocumentsUpdateOp {
 	return &DocumentsUpdateOp{
 		Credential: s.credential,
 		Method:     "PUT",
@@ -908,7 +991,6 @@ func (s *Service) DocumentsUpdate(documentID string, envelopeID string, contentD
 		Payload:    &esign.UploadFile{Reader: media, ContentType: mimeType},
 		QueryOpts:  make(url.Values),
 		Version:    esign.VersionV21,
-		Headers:    map[string]string{"Content-Disposition": contentDisposition},
 	}
 }
 
@@ -926,7 +1008,7 @@ func (op *DocumentsUpdateOp) Do(ctx context.Context) (*model.EnvelopeDocument, e
 // https://developers.docusign.com/esign-rest-api/reference/envelopes/envelopedocuments/updatelist
 //
 // SDK Method Envelopes::updateDocuments
-func (s *Service) DocumentsUpdateList(envelopeID string, envelopeDefinition *model.EnvelopeDefinition) *DocumentsUpdateListOp {
+func (s *Service) DocumentsUpdateList(envelopeID string, contentDisposition string, envelopeDefinition *model.EnvelopeDefinition) *DocumentsUpdateListOp {
 	return &DocumentsUpdateListOp{
 		Credential: s.credential,
 		Method:     "PUT",
@@ -934,6 +1016,7 @@ func (s *Service) DocumentsUpdateList(envelopeID string, envelopeDefinition *mod
 		Payload:    envelopeDefinition,
 		QueryOpts:  make(url.Values),
 		Version:    esign.VersionV21,
+		Headers:    map[string]string{"Content-Disposition": contentDisposition},
 	}
 }
 
@@ -951,12 +1034,12 @@ func (op *DocumentsUpdateListOp) Do(ctx context.Context) (*model.EnvelopeDocumen
 // https://developers.docusign.com/esign-rest-api/reference/envelopes/envelopeemailsettings/create
 //
 // SDK Method Envelopes::createEmailSettings
-func (s *Service) EmailSettingsCreate(envelopeID string, envelopeEmailSettings *model.EmailSettings) *EmailSettingsCreateOp {
+func (s *Service) EmailSettingsCreate(envelopeID string, emailSettings *model.EmailSettings) *EmailSettingsCreateOp {
 	return &EmailSettingsCreateOp{
 		Credential: s.credential,
 		Method:     "POST",
 		Path:       strings.Join([]string{"envelopes", envelopeID, "email_settings"}, "/"),
-		Payload:    envelopeEmailSettings,
+		Payload:    emailSettings,
 		QueryOpts:  make(url.Values),
 		Version:    esign.VersionV21,
 	}
@@ -1024,12 +1107,12 @@ func (op *EmailSettingsGetOp) Do(ctx context.Context) (*model.EmailSettings, err
 // https://developers.docusign.com/esign-rest-api/reference/envelopes/envelopeemailsettings/update
 //
 // SDK Method Envelopes::updateEmailSettings
-func (s *Service) EmailSettingsUpdate(envelopeID string, envelopeEmailSettings *model.EmailSettings) *EmailSettingsUpdateOp {
+func (s *Service) EmailSettingsUpdate(envelopeID string, emailSettings *model.EmailSettings) *EmailSettingsUpdateOp {
 	return &EmailSettingsUpdateOp{
 		Credential: s.credential,
 		Method:     "PUT",
 		Path:       strings.Join([]string{"envelopes", envelopeID, "email_settings"}, "/"),
-		Payload:    envelopeEmailSettings,
+		Payload:    emailSettings,
 		QueryOpts:  make(url.Values),
 		Version:    esign.VersionV21,
 	}
@@ -1068,7 +1151,7 @@ func (op *FormDataGetOp) Do(ctx context.Context) (*model.EnvelopeFormData, error
 	return res, ((*esign.Op)(op)).Do(ctx, &res)
 }
 
-// LocksCreate lock an envelope.
+// LocksCreate locks an envelope.
 //
 // https://developers.docusign.com/esign-rest-api/reference/envelopes/envelopelocks/create
 //
@@ -1240,7 +1323,7 @@ func (op *RecipientTabsListOp) Do(ctx context.Context) (*model.Tabs, error) {
 	return res, ((*esign.Op)(op)).Do(ctx, &res)
 }
 
-// IncludeAnchorTabLocations when set to **true**, all tabs with anchor tab properties are included in the response. If you do not specify this parameter, the effect is the default behavior (**false**).
+// IncludeAnchorTabLocations when set to **true**, all tabs with anchor tab properties are included in the response. The default value is **false**.
 func (op *RecipientTabsListOp) IncludeAnchorTabLocations() *RecipientTabsListOp {
 	if op != nil {
 		op.QueryOpts.Set("include_anchor_tab_locations", "true")
@@ -1413,7 +1496,7 @@ func (op *RecipientsListOp) IncludeMetadata(val string) *RecipientsListOp {
 	return op
 }
 
-// IncludeTabs when set to **true**, the tab information associated with the recipient is included in the response. If you do not specify this parameter, the effect is the default behavior (**false**).
+// IncludeTabs when set to **true**, the tab information associated with the recipient is included in the response.
 func (op *RecipientsListOp) IncludeTabs() *RecipientsListOp {
 	if op != nil {
 		op.QueryOpts.Set("include_tabs", "true")
@@ -1421,7 +1504,7 @@ func (op *RecipientsListOp) IncludeTabs() *RecipientsListOp {
 	return op
 }
 
-// RecipientsUpdate updates recipients in a draft envelope or corrects recipient information for an in process envelope.
+// RecipientsUpdate updates recipients in a draft envelope or corrects recipient information for an in-process envelope.
 //
 // https://developers.docusign.com/esign-rest-api/reference/envelopes/enveloperecipients/update
 //
@@ -1446,7 +1529,7 @@ func (op *RecipientsUpdateOp) Do(ctx context.Context) (*model.RecipientsUpdateSu
 	return res, ((*esign.Op)(op)).Do(ctx, &res)
 }
 
-// CombineSameOrderRecipients when **true**, recipients are combined or merged with matching recipients. Recipient matching occurs as part of [template matching](https://docs.docusign.com/DocuSignHelp/Content/automatic-template-matching.htm), and is based on Recipient Role and Routing Order.
+// CombineSameOrderRecipients when set to **true**, recipients are combined or merged with matching recipients. Recipient matching occurs as part of [template matching](https://docs.docusign.com/DocuSignHelp/Content/automatic-template-matching.htm), and is based on Recipient Role and Routing Order.
 func (op *RecipientsUpdateOp) CombineSameOrderRecipients(val string) *RecipientsUpdateOp {
 	if op != nil {
 		op.QueryOpts.Set("combine_same_order_recipients", val)
@@ -1495,6 +1578,14 @@ func (op *TemplatesApplyOp) Do(ctx context.Context) (*model.DocumentTemplateList
 	return res, ((*esign.Op)(op)).Do(ctx, &res)
 }
 
+// PreserveTemplateRecipient set the call query parameter preserve_template_recipient
+func (op *TemplatesApplyOp) PreserveTemplateRecipient(val string) *TemplatesApplyOp {
+	if op != nil {
+		op.QueryOpts.Set("preserve_template_recipient", val)
+	}
+	return op
+}
+
 // TemplatesApplyToDocument adds templates to a document in an  envelope.
 //
 // https://developers.docusign.com/esign-rest-api/reference/envelopes/envelopetemplates/applytodocument
@@ -1518,6 +1609,14 @@ type TemplatesApplyToDocumentOp esign.Op
 func (op *TemplatesApplyToDocumentOp) Do(ctx context.Context) (*model.DocumentTemplateList, error) {
 	var res *model.DocumentTemplateList
 	return res, ((*esign.Op)(op)).Do(ctx, &res)
+}
+
+// PreserveTemplateRecipient set the call query parameter preserve_template_recipient
+func (op *TemplatesApplyToDocumentOp) PreserveTemplateRecipient(val string) *TemplatesApplyToDocumentOp {
+	if op != nil {
+		op.QueryOpts.Set("preserve_template_recipient", val)
+	}
+	return op
 }
 
 // TemplatesDelete deletes a template from a document in an existing envelope.
@@ -1789,7 +1888,7 @@ func (op *CreateOp) CompletedDocumentsOnly(val string) *CreateOp {
 
 // MergeRolesOnDraft when set to **true**, template roles will be merged, and empty recipients will be removed. This parameter applies when you create a draft envelope with multiple templates. (To create a draft envelope, the `status` field is set to `created`.)
 //
-// ###### Note: DocuSign recommends that this parameter should be set to **true** whenever you create a draft envelope with multiple templates.
+// **Note**: DocuSign recommends that this parameter should be set to **true** whenever you create a draft envelope with multiple templates.
 func (op *CreateOp) MergeRolesOnDraft() *CreateOp {
 	if op != nil {
 		op.QueryOpts.Set("merge_roles_on_draft", "true")
@@ -2145,7 +2244,7 @@ func (op *ListAuditEventsOp) Do(ctx context.Context) (*model.EnvelopeAuditEventR
 	return res, ((*esign.Op)(op)).Do(ctx, &res)
 }
 
-// ListStatus gets the envelope status for the specified envelopes.
+// ListStatus gets envelope statuses for a set of envelopes.
 //
 // https://developers.docusign.com/esign-rest-api/reference/envelopes/envelopes/liststatus
 //
@@ -2189,7 +2288,7 @@ func (op *ListStatusOp) AcStatus(val string) *ListStatusOp {
 	return op
 }
 
-// Block if **true** removes any results that match one of the provided `transaction_ids`.
+// Block if set to **true**, removes any results that match one of the provided `transaction_ids`.
 func (op *ListStatusOp) Block(val string) *ListStatusOp {
 	if op != nil {
 		op.QueryOpts.Set("block", val)
@@ -2205,7 +2304,7 @@ func (op *ListStatusOp) Count(val string) *ListStatusOp {
 	return op
 }
 
-// Email email address of the sender.
+// Email is the email address of the sender.
 func (op *ListStatusOp) Email(val string) *ListStatusOp {
 	if op != nil {
 		op.QueryOpts.Set("email", val)
@@ -2217,7 +2316,7 @@ func (op *ListStatusOp) Email(val string) *ListStatusOp {
 //
 // The value of this property can be:
 // - A comma-separated list of envelope IDs
-// - The special value `request_body`. In this case, this method uses the envelope IDs in the request body.
+// - The special value `request_body`. In this case, the method uses the envelope IDs in the request body.
 func (op *ListStatusOp) EnvelopeIds(val string) *ListStatusOp {
 	if op != nil {
 		op.QueryOpts.Set("envelope_ids", val)
@@ -2260,7 +2359,7 @@ func (op *ListStatusOp) FromToStatus(val string) *ListStatusOp {
 	return op
 }
 
-// StartPosition starting position for search.
+// StartPosition is the starting index position for search.
 func (op *ListStatusOp) StartPosition(val int) *ListStatusOp {
 	if op != nil {
 		op.QueryOpts.Set("start_position", fmt.Sprintf("%d", val))
@@ -2291,7 +2390,7 @@ func (op *ListStatusOp) Status(val string) *ListStatusOp {
 // that specifies the last date/time
 // or envelope status changes in the result set.
 //
-// Default: "now", the time that you call the method.
+// The default value is the time that you call the method.
 func (op *ListStatusOp) ToDate(val time.Time) *ListStatusOp {
 	if op != nil {
 		op.QueryOpts.Set("to_date", val.Format(time.RFC3339))
@@ -2311,7 +2410,7 @@ func (op *ListStatusOp) TransactionIds(val string) *ListStatusOp {
 	return op
 }
 
-// UserName limit results to envelopes
+// UserName limits results to envelopes
 // sent by the account user
 // with this user name.
 //
@@ -2349,18 +2448,7 @@ func (op *ListStatusChangesOp) Do(ctx context.Context) (*model.EnvelopesInformat
 	return res, ((*esign.Op)(op)).Do(ctx, &res)
 }
 
-// AcStatus specifies the Authoritative Copy Status for the envelopes. The possible values are:
-//
-// - `Unknown`
-// - `Original`
-// - `Transferred`
-// - `AuthoritativeCopy`
-// - `AuthoritativeCopyExportPending`
-// - `AuthoritativeCopyExported`
-// - `DepositPending`
-// - `Deposited`
-// - `DepositedEO`
-// - `DepositFailed`
+// AcStatus specifies the Authoritative Copy Status for the envelopes. The possible values are: Unknown, Original, Transferred, AuthoritativeCopy, AuthoritativeCopyExportPending, AuthoritativeCopyExported, DepositPending, Deposited, DepositedEO, or DepositFailed.
 func (op *ListStatusChangesOp) AcStatus(val string) *ListStatusChangesOp {
 	if op != nil {
 		op.QueryOpts.Set("ac_status", val)
@@ -2489,24 +2577,9 @@ func (op *ListStatusChangesOp) FromDate(val time.Time) *ListStatusChangesOp {
 	return op
 }
 
-// FromToStatus is the envelope status that you are checking for. Possible values are:
+// FromToStatus this is the status type checked for in the `from_date`/`to_date` period. If `changed` is specified, then envelopes that changed status during the period are found. If for example, `created` is specified, then envelopes created during the period are found. Default is `changed`.
 //
-//
-// - `Changed` (default)
-// - `Completed`
-// - `Created`
-// - `Declined`
-// - `Deleted`
-// - `Delivered`
-// - `Processing`
-// - `Sent`
-// - `Signed`
-// - `TimedOut`
-// - `Voided`
-//
-// For example, if you specify `Changed`, this method
-// returns a list of envelopes that changed status
-// during the `from_date` to `to_date` time period.
+// Possible values are: Voided, Changed, Created, Deleted, Sent, Delivered, Signed, Completed, Declined, TimedOut and Processing.
 func (op *ListStatusChangesOp) FromToStatus(val string) *ListStatusChangesOp {
 	if op != nil {
 		op.QueryOpts.Set("from_to_status", val)
@@ -2523,7 +2596,6 @@ func (op *ListStatusChangesOp) FromToStatus(val string) *ListStatusChangesOp {
 // - `folders`: The folders where the envelope exists.
 // - `recipients`: The recipients associated with the envelope.
 // - `powerform`: The PowerForms associated with the envelope.
-// - `tabs`: The tabs associated with the envelope.
 // - `payment_tabs`: The payment tabs associated with the envelope.
 func (op *ListStatusChangesOp) Include(val string) *ListStatusChangesOp {
 	if op != nil {
@@ -2532,7 +2604,7 @@ func (op *ListStatusChangesOp) Include(val string) *ListStatusChangesOp {
 	return op
 }
 
-// IncludePurgeInformation when **true**, information about envelopes that the sender has deleted are included in the response.
+// IncludePurgeInformation when set to **true**, information about envelopes that have been deleted is included in the response.
 func (op *ListStatusChangesOp) IncludePurgeInformation(val string) *ListStatusChangesOp {
 	if op != nil {
 		op.QueryOpts.Set("include_purge_information", val)
@@ -2610,6 +2682,14 @@ func (op *ListStatusChangesOp) QueryBudget(val string) *ListStatusChangesOp {
 	return op
 }
 
+// RequesterDateFormat set the call query parameter requester_date_format
+func (op *ListStatusChangesOp) RequesterDateFormat(val string) *ListStatusChangesOp {
+	if op != nil {
+		op.QueryOpts.Set("requester_date_format", val)
+	}
+	return op
+}
+
 // SearchText free text search criteria that you can use to filter the list of envelopes that is returned.
 func (op *ListStatusChangesOp) SearchText(val string) *ListStatusChangesOp {
 	if op != nil {
@@ -2657,8 +2737,11 @@ func (op *ListStatusChangesOp) ToDate(val time.Time) *ListStatusChangesOp {
 	return op
 }
 
-// TransactionIds is a comma-separated list of envelope transaction IDs.
-// Transaction IDs are only valid for seven days.
+// TransactionIds if included in the query string, this is a comma separated list of envelope `transactionId`s.
+//
+// If included in the `request_body`, this is a list of envelope `transactionId`s.
+//
+// ###### Note: `transactionId`s are only valid in the DocuSign system for seven days.
 func (op *ListStatusChangesOp) TransactionIds(val ...string) *ListStatusChangesOp {
 	if op != nil {
 		op.QueryOpts.Set("transaction_ids", strings.Join(val, ","))
@@ -2729,12 +2812,12 @@ func (op *RotateDocumentPageOp) Do(ctx context.Context) error {
 // https://developers.docusign.com/esign-rest-api/reference/envelopes/envelopes/update
 //
 // SDK Method Envelopes::update
-func (s *Service) Update(envelopeID string, envelopes *model.Envelope) *UpdateOp {
+func (s *Service) Update(envelopeID string, envelope *model.Envelope) *UpdateOp {
 	return &UpdateOp{
 		Credential: s.credential,
 		Method:     "PUT",
 		Path:       strings.Join([]string{"envelopes", envelopeID}, "/"),
-		Payload:    envelopes,
+		Payload:    envelope,
 		QueryOpts:  make(url.Values),
 		Version:    esign.VersionV21,
 	}
@@ -2869,12 +2952,12 @@ func (op *TemplateDocumentVisibilityGetOp) Do(ctx context.Context) (*model.Docum
 // https://developers.docusign.com/esign-rest-api/reference/envelopes/templatedocumentvisibility/update
 //
 // SDK Method Envelopes::updateTemplateRecipientDocumentVisibility
-func (s *Service) TemplateDocumentVisibilityUpdate(recipientID string, templateID string, templateDocumentVisibility *model.TemplateDocumentVisibilityList) *TemplateDocumentVisibilityUpdateOp {
+func (s *Service) TemplateDocumentVisibilityUpdate(recipientID string, templateID string, templateDocumentVisibilityList *model.TemplateDocumentVisibilityList) *TemplateDocumentVisibilityUpdateOp {
 	return &TemplateDocumentVisibilityUpdateOp{
 		Credential: s.credential,
 		Method:     "PUT",
 		Path:       strings.Join([]string{"templates", templateID, "recipients", recipientID, "document_visibility"}, "/"),
-		Payload:    templateDocumentVisibility,
+		Payload:    templateDocumentVisibilityList,
 		QueryOpts:  make(url.Values),
 		Version:    esign.VersionV21,
 	}
@@ -2894,12 +2977,12 @@ func (op *TemplateDocumentVisibilityUpdateOp) Do(ctx context.Context) (*model.Te
 // https://developers.docusign.com/esign-rest-api/reference/envelopes/templatedocumentvisibility/updatelist
 //
 // SDK Method Envelopes::updateTemplateRecipientsDocumentVisibility
-func (s *Service) TemplateDocumentVisibilityUpdateList(templateID string, templateDocumentVisibility *model.TemplateDocumentVisibilityList) *TemplateDocumentVisibilityUpdateListOp {
+func (s *Service) TemplateDocumentVisibilityUpdateList(templateID string, templateDocumentVisibilityList *model.TemplateDocumentVisibilityList) *TemplateDocumentVisibilityUpdateListOp {
 	return &TemplateDocumentVisibilityUpdateListOp{
 		Credential: s.credential,
 		Method:     "PUT",
 		Path:       strings.Join([]string{"templates", templateID, "recipients", "document_visibility"}, "/"),
-		Payload:    templateDocumentVisibility,
+		Payload:    templateDocumentVisibilityList,
 		QueryOpts:  make(url.Values),
 		Version:    esign.VersionV21,
 	}
@@ -2914,9 +2997,11 @@ func (op *TemplateDocumentVisibilityUpdateListOp) Do(ctx context.Context) (*mode
 	return res, ((*esign.Op)(op)).Do(ctx, &res)
 }
 
-// NotaryJournalsList is SDK Method Envelopes::listNotaryJournals
+// NotaryJournalsList gets notary jurisdictions for a user.
 //
-// https://developers.docusign.com/esign/restapi/Envelopes/NotaryJournals/list
+// https://developers.docusign.com/esign-rest-api/reference/envelopes/notaryjournals/list
+//
+// SDK Method Envelopes::listNotaryJournals
 func (s *Service) NotaryJournalsList() *NotaryJournalsListOp {
 	return &NotaryJournalsListOp{
 		Credential: s.credential,
@@ -2944,7 +3029,7 @@ func (op *NotaryJournalsListOp) Count(val string) *NotaryJournalsListOp {
 	return op
 }
 
-// SearchText set the call query parameter search_text
+// SearchText use this parameter to search for specific text.
 func (op *NotaryJournalsListOp) SearchText(val string) *NotaryJournalsListOp {
 	if op != nil {
 		op.QueryOpts.Set("search_text", val)
@@ -2960,9 +3045,11 @@ func (op *NotaryJournalsListOp) StartPosition(val string) *NotaryJournalsListOp 
 	return op
 }
 
-// ViewsCreateSharedRecipient is SDK Method Envelopes::createEnvelopeRecipientSharedView
+// ViewsCreateSharedRecipient returns a URL to the shared recipient view UI for an envelope.
 //
-// https://developers.docusign.com/esign/restapi/Envelopes/EnvelopeViews/createSharedRecipient
+// https://developers.docusign.com/esign-rest-api/reference/envelopes/envelopeviews/createsharedrecipient
+//
+// SDK Method Envelopes::createEnvelopeRecipientSharedView
 func (s *Service) ViewsCreateSharedRecipient(envelopeID string, recipientViewRequest *model.RecipientViewRequest) *ViewsCreateSharedRecipientOp {
 	return &ViewsCreateSharedRecipientOp{
 		Credential: s.credential,
