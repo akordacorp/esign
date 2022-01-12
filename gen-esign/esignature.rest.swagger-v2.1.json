@@ -6952,6 +6952,13 @@
             "description": "The envelope's GUID. \n\nExample: `93be49ab-xxxx-xxxx-xxxx-f752070d71ec`\n",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "Content-Disposition",
+            "in": "header",
+            "description": "filename of the document",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
